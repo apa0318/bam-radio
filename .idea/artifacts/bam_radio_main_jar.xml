@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="bam-radio.main:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/bam_radio_main_jar</output-path>
+    <root id="archive" name="bam-radio.jar">
+      <element id="module-output" name="bam-radio.main" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/main/java/config.yml" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/main/java/de.yml" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/main/java/pl.yml" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/main/java/plugin.yml" />
+    </root>
+  </artifact>
+</component>

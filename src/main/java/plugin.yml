@@ -1,0 +1,13 @@
+name: BAMradio
+main: yt.bam.bamradio.BAMradio
+author: FR34KYN01535
+version: 1.8
+description: Plays midi files.
+softdepend: [NoteBlockAPI,WorldGuard]
+commands:
+  bamradio:
+    description: Show all BAMradio commands
+    usage: /bamradio
+  br:
+    description: Alias to /bamradio
+    usage: /br

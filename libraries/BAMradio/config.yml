@@ -1,0 +1,33 @@
+# BAMradio -- Author: FR34KYN01535 
+# For more information visit http://dev.bukkit.org/server-mods/bamradio/
+
+#Search for updates and alert if there are new
+check-for-updates: true
+
+#Enable Metrics and help the developers :)
+enable-metrics: true
+
+#Start playing when the server starts
+auto-play: true
+
+#Initial volume (Can be negative)
+volume: 15
+
+#Auto play new song after the current has ended
+auto-play-next: true
+
+#Force usage of software sequencer, even if a midi sequencer device is found
+force-software-sequencer: false
+
+#Show current / new track message
+show-current-track: true
+
+# If you want to hear the tracks only in a specific WorldGuard region then put in the name, otherwise leave it blank
+region: ""
+
+# If you want to hear the tracks only in a specific world then put in the name, otherwise leave it blank
+world: ""
+
+# Default language is english if empty or "en". 
+# To switch language put in the name of the languagefile (e.g. "de" for de.yml)
+language: "en"
