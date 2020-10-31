@@ -5,6 +5,9 @@
 
 package yt.bam.bamradio.radiomanager.listener;
 
+import com.sk89q.worldedit.bukkit.BukkitAdapter;
+import com.sk89q.worldedit.math.BlockVector3;
+import com.sk89q.worldguard.WorldGuard;
 import com.sk89q.worldguard.protection.ApplicableRegionSet;
 import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
@@ -100,11 +103,11 @@ public class WGRegionEventsListener implements Listener {
         }
 
         Set<ProtectedRegion> oldRegions = new HashSet(regions);
-        RegionManager rm = BAMradio.Instance.WorldGuardInstance.getRegionManager(to.getWorld());
+        RegionManager rm = WorldGuard.getInstance().getPlatform().getRegionContainer().get(BukkitAdapter.adapt(to.getWorld()));
         if (rm == null) {
             return false;
         } else {
-            ApplicableRegionSet appRegions = rm.getApplicableRegions(to);
+            ApplicableRegionSet appRegions = rm.getApplicableRegions(BlockVector3.at(to.getX(),to.getY(),to.getZ()));
             Iterator i$ = appRegions.iterator();
 
             while(i$.hasNext()) {
@@ -118,17 +121,9 @@ public class WGRegionEventsListener implements Listener {
                         return true;
                     }
 
-                    (new Thread() {
-                        public void run() {
-                            try {
-                                sleep(50L);
-                            } catch (InterruptedException var2) {
-                            }
+                    RegionEnteredEvent regionEnteredEvent = new RegionEnteredEvent(region, player, movement);
+                    BAMradio.Instance.getServer().getPluginManager().callEvent(regionEnteredEvent);
 
-                            RegionEnteredEvent e = new RegionEnteredEvent(region, player, movement);
-                            BAMradio.Instance.getServer().getPluginManager().callEvent(e);
-                        }
-                    }).start();
                     regions.add(region);
                 }
             }
@@ -150,17 +145,9 @@ public class WGRegionEventsListener implements Listener {
                             return true;
                         }
 
-                        (new Thread() {
-                            public void run() {
-                                try {
-                                    sleep(50L);
-                                } catch (InterruptedException var2) {
-                                }
+                        RegionLeftEvent regionLeftEvent = new RegionLeftEvent(region, player, movement);
+                        BAMradio.Instance.getServer().getPluginManager().callEvent(regionLeftEvent);
 
-                                RegionLeftEvent e = new RegionLeftEvent(region, player, movement);
-                                BAMradio.Instance.getServer().getPluginManager().callEvent(e);
-                            }
-                        }).start();
                         itr.remove();
                     }
                 }
