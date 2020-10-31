@@ -125,7 +125,7 @@ public class SequencerMidiPlayer implements MidiPlayer, Receiver {
                     Player player = (Player)i$.next();
                     Sound sound = Instrument.getInstrument(patch, channel);
                     if (sound != null) {
-                        if (sound == Sound.NOTE_PLING) {
+                        if (sound == Sound.BLOCK_NOTE_BLOCK_PLING) {
                             player.playSound(player.getLocation().add(0.0D, 20.0D, 0.0D), sound, volume, NotePitch.getPitch(note));
                         } else {
                             player.playSound(player.getLocation(), sound, volume, NotePitch.getPitch(note));

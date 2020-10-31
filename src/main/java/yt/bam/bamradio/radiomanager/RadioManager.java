@@ -185,7 +185,7 @@ public class RadioManager {
             }
         }
 
-        Player[] onlinePlayerList = BAMradio.Instance.getServer().getOnlinePlayers();
+        Player[] onlinePlayerList = BAMradio.Instance.getServer().getOnlinePlayers().toArray(new Player[0]);
         Player[] arr$ = onlinePlayerList;
         int len$ = onlinePlayerList.length;
 
